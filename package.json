@@ -1,0 +1,42 @@
+{
+  "name": "cordova-plugin-nativeappextension",
+  "version": "0.0.1",
+  "description": "This plugin for Cordova, it provides you the native app operations abilities. It written for ios and android",
+  "cordova": {
+    "id": "cordova-plugin-nativeappextension",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/playwbj/NativeAppAbility"
+  },
+  "keywords": [
+    "Cordova",    
+    "plugin",
+    "app",
+	"extension",    
+    "installed",           
+    "Package",
+    "Name",
+    "iOS",
+    "Android",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "perkins wu",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/playwbj/NativeAppAbility/issues"
+  },
+  "homepage": "https://github.com/playwbj/NativeAppAbility"
+}

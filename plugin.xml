@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-nativeappability"
+        version="0.4.2">
+    
+    <name>NativeAppAbility</name>
+    
+    <description>This plugin for Cordova, it provodes you the native app operation abilities for (iOS) and (Android).</description>
+    
+    <keywords>Cordova,plugin,app,native,installed,URIScheme,URI,Scheme,PackageName,Package,Name,iOS,Android</keywords>
+    
+    <repo>https://github.com/playwbj/NativeAppAbility</repo>
+    <issue>https://github.com/playwbj/NativeAppAbility/issues</issue>
+    
+    <license>Apache License 2.0</license>
+    
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+    
+    <js-module src="www/NativeAppAbility.js" name="NativeAppAbility">
+        <clobbers target="nativeAppAbility" />
+    </js-module>
+    
+    <!-- iOS -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="NativeAppAbility">
+                <param name="ios-package" value="NativeAppAbility" />
+            </feature>
+        </config-file>
+        
+        <header-file src="src/ios/NativeAppAbility.h" />
+        <source-file src="src/ios/NativeAppAbility.m" />
+    </platform>
+    
+    <!-- Android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="NativeAppAbility">
+                <param name="android-package" value="com.wingconn.NativeAppAbility" />
+            </feature>
+        </config-file>
+        
+        <source-file src="src/android/NativeAppAbility.java" target-dir="src/com/wingconn/" />
+    </platform>
+    
+</plugin>
