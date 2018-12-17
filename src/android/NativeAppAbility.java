@@ -14,9 +14,9 @@ import android.content.pm.PackageInfo;
 public class NativeAppAbility extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if(action.equals("checkAvailability")) {
+        if(action.equals("checkAppInstalled")) {
             String uri = args.getString(0);
-            this.checkAvailability(uri, callbackContext);
+            this.checkAppInstalled(uri, callbackContext);
             return true;
         }else if(action.equals("startupNativeApp")) {
             String uri = args.getString(0);
@@ -49,7 +49,7 @@ public class NativeAppAbility extends CordovaPlugin {
      * @param uri
      * @param callbackContext
      */
-    private void checkAvailability(String uri, CallbackContext callbackContext) {
+    private void checkAppInstalled(String uri, CallbackContext callbackContext) {
         PackageInfo info = getAppPackageInfo(uri);
         if(info != null) {
             try {
