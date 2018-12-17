@@ -1,21 +1,20 @@
-var nativeAppAbility = {
-    
-    check: function(urlScheme, successCallback, errorCallback) {
+var nativeAppAbility = {    
+    checkAppInstalled: function(urlScheme, successCallback, errorCallback) {
         cordova.exec(
             successCallback,
             errorCallback,
             "NativeAppAbility",
-            "checkAvailability",
+            "checkAppInstalled",
             [urlScheme]
         );
     },
     
-    checkBool: function(urlScheme, callback) {
+    startupNativeApp: function(urlScheme, successCallback,errorCallback) {
         cordova.exec(
-            function(success) { callback(success); },
-            function(error) { callback(error); },
-            "AppAvailability",
-            "checkAvailability",
+            successCallback,
+            errorCallback,
+            "NativeAppAbility",
+            "startupNativeApp",
             [urlScheme]
         );
     }

@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
 
@@ -17,45 +18,76 @@ public class NativeAppAbility extends CordovaPlugin {
             String uri = args.getString(0);
             this.checkAvailability(uri, callbackContext);
             return true;
+        }else if(action.equals("startupNativeApp")) {
+            String uri = args.getString(0);
+            this.startupNativeApp(uri, callbackContext);
+            return true;
         }
         return false;
     }
-    
-    // Thanks to http://floresosvaldo.com/android-cordova-plugin-checking-if-an-app-exists
-    public PackageInfo getAppPackageInfo(String uri) {
+
+    /**
+     * open native app
+     * @param packageName
+     */
+    private void startupNativeApp(String packageName, CallbackContext callbackContext){
         Context ctx = this.cordova.getActivity().getApplicationContext();
-        final PackageManager pm = ctx.getPackageManager();
+        PackageManager manager = ctx.getPackageManager();
 
+        Intent intent;
         try {
-            return pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
-        }
-        catch(PackageManager.NameNotFoundException e) {
-            return null;
-        }
-    }
-    
-    private void checkAvailability(String uri, CallbackContext callbackContext) {
-
-        PackageInfo info = getAppPackageInfo(uri);
-
-        if(info != null) {
-            try {
-                callbackContext.success(this.convertPackageInfoToJson(info));
-            } 
-            catch(JSONException e) {
-                callbackContext.error("");    
-            }
-        }
-        else {
+            intent = manager.getLaunchIntentForPackage(packageName);
+            this.cordova.getActivity().startActivity(intent);
+            callbackContext.success();
+        }catch (Exception e){
             callbackContext.error("");
         }
     }
 
+    /**
+     * main entry of checking if the app is available
+     * @param uri
+     * @param callbackContext
+     */
+    private void checkAvailability(String uri, CallbackContext callbackContext) {
+        PackageInfo info = getAppPackageInfo(uri);
+        if(info != null) {
+            try {
+                callbackContext.success(this.convertPackageInfoToJson(info));
+            }catch(JSONException e) {
+                callbackContext.error("");
+            }
+        }else {
+            callbackContext.error("");
+        }
+    }
+
+    /**
+     * get app package info
+     * @param uri
+     * @return
+     */
+    private PackageInfo getAppPackageInfo(String uri) {
+        Context ctx = this.cordova.getActivity().getApplicationContext();
+        PackageManager pm = ctx.getPackageManager();
+
+        try {
+            return pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
+        }catch(PackageManager.NameNotFoundException e) {
+            return null;
+        }
+    }
+
+    /**
+     * convert package info to json
+     * @param info
+     * @return
+     * @throws JSONException
+     */
     private JSONObject convertPackageInfoToJson(PackageInfo info) throws JSONException {
         JSONObject json = new JSONObject();
         json.put("version", info.versionName);
         json.put("appId", info.packageName);
-
         return json;
     }
 }

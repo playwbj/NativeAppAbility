@@ -5,7 +5,7 @@
         id="cordova-plugin-nativeappability"
         version="0.4.2">
     
-    <name>NativeAppAbility</name>
+    <name>nativeAppAbility</name>
     
     <description>This plugin for Cordova, it provodes you the native app operation abilities for (iOS) and (Android).</description>
     
@@ -20,14 +20,14 @@
         <engine name="cordova" version=">=3.0.0" />
     </engines>
     
-    <js-module src="www/NativeAppAbility.js" name="NativeAppAbility">
+    <js-module src="www/nativeAppAbility.js" name="nativeAppAbility">
         <clobbers target="nativeAppAbility" />
     </js-module>
     
     <!-- iOS -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="NativeAppAbility">
+            <feature name="nativeAppAbility">
                 <param name="ios-package" value="NativeAppAbility" />
             </feature>
         </config-file>
@@ -39,12 +39,12 @@
     <!-- Android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="NativeAppAbility">
+            <feature name="nativeAppAbility">
                 <param name="android-package" value="com.wingconn.NativeAppAbility" />
             </feature>
         </config-file>
         
-        <source-file src="src/android/NativeAppAbility.java" target-dir="src/com/wingconn/" />
+        <source-file src="src/android/NativeAppAbility.java" target-dir="src/com/wingconn" />
     </platform>
     
 </plugin>
