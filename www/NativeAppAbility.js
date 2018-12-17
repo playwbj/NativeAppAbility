@@ -3,7 +3,7 @@ var nativeAppAbility = {
         cordova.exec(
             successCallback,
             errorCallback,
-            "NativeAppAbility",
+            "nativeAppAbility",
             "checkAppInstalled",
             [urlScheme]
         );
@@ -13,7 +13,7 @@ var nativeAppAbility = {
         cordova.exec(
             successCallback,
             errorCallback,
-            "NativeAppAbility",
+            "nativeAppAbility",
             "startupNativeApp",
             [urlScheme]
         );
