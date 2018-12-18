@@ -2,13 +2,13 @@
 
 A Plugin for Apache Cordova and by [perkins wu]
 
-# this ability plugin provides two features now:check if one app is installed; start up native app.
-## installation current plugin:
+## 1. this ability plugin provides two features now:check if one app is installed; start up native app.
+### 1.1 installation current plugin:
 
   cordova plugin add https://github.com/playwbj/NativeAppAbility.git --save  
-## if you wanna distinguish if the plaform is android or ios, install the plugin cordova-plugin-device:
+### 1.2 if you wanna distinguish if the plaform is android or ios, install the plugin cordova-plugin-device:
   cordova plugin add cordova-plugin-device  
-## and use following js to check the plaform:
+### 1.3 use following js to check the plaform:
   if(device.platform === 'iOS') {  
     scheme = 'twitter://';  
   }  
@@ -18,8 +18,8 @@ A Plugin for Apache Cordova and by [perkins wu]
   
   
 
-## check if app is installed info:
-### usage example:
+## 2. check if app is installed info:
+### 2.1 usage example:
 
 nativeAppAbility.checkAppInstalled(
 			uri,//e.g. com.tencent.qqlive  
@@ -31,8 +31,8 @@ nativeAppAbility.checkAppInstalled(
 			}  
 );
     
-## start up a native app with uri
-### usage example:
+## 3. start up a native app with uri
+### 3.1 usage example:
 
 nativeAppAbility.startupNativeApp(  
 			uri,//e.g. com.tencent.qqlive  
