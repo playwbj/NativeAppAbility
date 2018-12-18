@@ -3,7 +3,7 @@
 A Plugin for Apache Cordova and by perkins wu,provides two features now:check if one app is installed; start up native app
 
 ## 1. How to install
-### 1.1 installation current plugin:
+### 1.1 install current plugin:
 
   cordova plugin add https://github.com/playwbj/NativeAppAbility.git --save  
 ### 1.2 if you wanna distinguish if the plaform is android or ios, install the plugin cordova-plugin-device:
