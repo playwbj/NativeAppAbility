@@ -10,7 +10,7 @@ A Plugin for Apache Cordova and by [perkins wu]
 ## check if app is installed info:
 ### usage example:
 
-nativeAppAbility.checkAppInstalled(
+nativeAppAbility.checkAppInstalled( </br>
 			uri,//e.g. com.tencent.qqlive       
 			function(info) {  // Success callback				
         console.log(info.appId + ' with version '+info.version+' is installed');
