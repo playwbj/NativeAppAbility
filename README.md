@@ -3,7 +3,7 @@
 A Plugin for Apache Cordova and by [perkins wu]
 
 # this ability plugin provides two features now:check if one app is installed; start up native app.
-installation step:
+## installation step:
 
   cordova plugin add https://github.com/playwbj/NativeAppAbility.git --save
 
@@ -34,3 +34,4 @@ nativeAppAbility.startupNativeApp(
 		);
 	}
 
+# todo: IOS support
