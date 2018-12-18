@@ -1,8 +1,8 @@
 # NativeAppAbility for iOS and Android
 
-A Plugin for Apache Cordova and by [perkins wu]
+A Plugin for Apache Cordova and by perkins wu,provides two features now:check if one app is installed; start up native app
 
-## 1. this ability plugin provides two features now:check if one app is installed; start up native app.
+## 1. How to install
 ### 1.1 installation current plugin:
 
   cordova plugin add https://github.com/playwbj/NativeAppAbility.git --save  
