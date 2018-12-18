@@ -11,13 +11,13 @@ A Plugin for Apache Cordova and by [perkins wu]
 ### usage example:
 
 nativeAppAbility.checkAppInstalled( </br>
-			uri,//e.g. com.tencent.qqlive       
-			function(info) {  // Success callback				
-        console.log(info.appId + ' with version '+info.version+' is installed');
-			},
-			function() {  // Error callback
-				console.log(uri + ' is not installed');				
-			}
+			uri,//e.g. com.tencent.qqlive</br>       
+			function(info) {  // Success callback</br>				
+        			console.log(info.appId + ' with version '+info.version+' is installed');</br>
+			},</br>
+			function() {  // Error callback</br>
+				console.log(uri + ' is not installed');	</br>			
+			}</br>
 		);
     
 ## start up a native app with uri
