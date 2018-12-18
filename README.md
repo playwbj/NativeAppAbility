@@ -23,15 +23,15 @@ nativeAppAbility.checkAppInstalled(
 ## start up a native app with uri
 ### usage example:
 
-nativeAppAbility.startupNativeApp(
-			uri,//e.g. com.tencent.qqlive 
-			function(info) {  // Success callback
-				console.log(uri + ' is opened successfully');
-			},
-			function() {  // Error callback
-				console.log(uri + ' is opened unsuccessfully');
-			}
-		);
-	}
+nativeAppAbility.startupNativeApp(  
+			uri,//e.g. com.tencent.qqlive  
+			function(info) {  // Success callback  
+				console.log(uri + ' is opened successfully');  
+			},  
+			function() {  // Error callback  
+				console.log(uri + ' is opened unsuccessfully');  
+			}  
+		);  
+	}  
 
 # todo: IOS support
