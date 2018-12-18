@@ -45,4 +45,4 @@ nativeAppAbility.startupNativeApp(
 		);  
 	}  
 
-# todo: IOS support
+# 4. todo: IOS support
