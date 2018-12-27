@@ -1,6 +1,6 @@
-# NativeAppAbility for iOS and Android
+# This Plugin for Apache Cordova and by perkins wu,provides two features now:check if one app is installed; start up native app
 
-A Plugin for Apache Cordova and by perkins wu,provides two features now:check if one app is installed; start up native app
+# NativeAppAbility for Android and IOS
 
 ## 1. How to install
 ### 1.1 install current plugin:
@@ -15,11 +15,11 @@ A Plugin for Apache Cordova and by perkins wu,provides two features now:check if
   else if(device.platform === 'Android') {  
     scheme = 'com.twitter.android';  
   }  
-  
-  
+### 1.4 ios installation requirements
+  cordova plugin add cordova-plugin-add-swift-support --save  
 
 ## 2. check if app is installed info:
-### 2.1 usage example:
+### 2.1 android usage example:
 
 nativeAppAbility.checkAppInstalled(
 			uri,//e.g. com.tencent.qqlive  
@@ -32,7 +32,7 @@ nativeAppAbility.checkAppInstalled(
 );
     
 ## 3. start up a native app with uri
-### 3.1 usage example:
+### 3.1 android usage example:
 
 nativeAppAbility.startupNativeApp(  
 			uri,//e.g. com.tencent.qqlive  
@@ -44,5 +44,3 @@ nativeAppAbility.startupNativeApp(
 			}  
 		);  
 	}  
-
-# 4. todo: IOS support
