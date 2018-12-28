@@ -30,10 +30,10 @@
             <feature name="nativeAppAbility">
                 <param name="ios-package" value="NativeAppAbility" />
             </feature>
-        </config-file>
+        </config-file>        
         
-        <header-file src="src/ios/NativeAppAbility.h" />
-        <source-file src="src/ios/NativeAppAbility.m" />
+        <source-file src="src/ios/NativeAppAbility.swift" />
+        <dependency id="cordova-plugin-add-swift-support" version="1.7.2"/>
     </platform>
     
     <!-- Android -->
