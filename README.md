@@ -17,7 +17,8 @@
 ### 1.3 if need to use this plugin in ios platform, add below plugin
   cordova plugin add cordova-plugin-add-swift-support --save  
 
-## 2. check if app is installed info, before use this function,please add the whitelite to your package，refer to http://note.youdao.com/noteshare?id=ed4883e4bc52c3b6485e06f5723ae3e2
+## 2. check if app is installed info
+before use this function,please add the whitelite to your package，refer to http://note.youdao.com/noteshare?id=ed4883e4bc52c3b6485e06f5723ae3e2
 ### 2.1 usage example:
 
 nativeAppAbility.checkAppInstalled(
