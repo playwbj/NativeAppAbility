@@ -11,7 +11,7 @@ import Foundation
 @objc(NativeAppAbility) class NativeAppAbility: CDVPlugin {
     
     //check if app is installed
-    func checkAppInstalled(command: CDVInvokedUrlCommand){
+    func checkAppInstalled(_ command: CDVInvokedUrlCommand){
         var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: true);
         let uriArg = command.argument(at: 0) as! String;
         let url = URL.init(string: uriArg);
@@ -26,7 +26,7 @@ import Foundation
     }
     
     //startup the native app    
-    func startupNativeApp(command: CDVInvokedUrlCommand){
+    func startupNativeApp(_ command: CDVInvokedUrlCommand){
         var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: true);
         let uriArg = command.argument(at: 0) as! String;
         let url = URL.init(string: uriArg);
