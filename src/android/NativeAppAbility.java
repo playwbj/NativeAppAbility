@@ -6,10 +6,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
+import android.content.pm.ResolveInfo;
+
+import java.util.List;
 
 public class NativeAppAbility extends CordovaPlugin {
     @Override
@@ -33,15 +37,36 @@ public class NativeAppAbility extends CordovaPlugin {
     private void startupNativeApp(String packageName, CallbackContext callbackContext){
         Context ctx = this.cordova.getActivity().getApplicationContext();
         PackageManager manager = ctx.getPackageManager();
-
         Intent intent;
         try {
             intent = manager.getLaunchIntentForPackage(packageName);
+            String className = getPackageClassName(packageName);
+            intent.setComponent(new ComponentName(packageName, className));
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                    | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
             this.cordova.getActivity().startActivity(intent);
             callbackContext.success();
         }catch (Exception e){
             callbackContext.error("");
         }
+    }
+
+    private String getPackageClassName(String packageName){
+        Context ctx = this.cordova.getActivity().getApplicationContext();
+        PackageManager manager = ctx.getPackageManager();
+
+        Intent intent = manager.getLaunchIntentForPackage(packageName);
+//        Intent intent = new Intent(Intent.ACTION_MAIN, null);
+//        intent.addCategory(Intent.CATEGORY_DEFAULT);
+        List<ResolveInfo> listInfos = manager.queryIntentActivities(intent, 0);
+        String className = null;
+        for (ResolveInfo info : listInfos) {
+            if (packageName.equals(info.activityInfo.packageName)) {
+                className = info.activityInfo.name;
+                break;
+            }
+        }
+        return className;
     }
 
     /**
