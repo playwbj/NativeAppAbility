@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
 import android.content.pm.ResolveInfo;
+import android.net.Uri;
 
 import java.util.List;
 
@@ -42,6 +43,8 @@ public class NativeAppAbility extends CordovaPlugin {
             intent = manager.getLaunchIntentForPackage(packageName);
             String className = getPackageClassName(packageName);
             intent.setComponent(new ComponentName(packageName, className));
+            Uri uri = Uri.parse(packageName);
+            intent.setData(uri);
 //            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
 //                    | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
             this.cordova.getActivity().startActivity(intent);
