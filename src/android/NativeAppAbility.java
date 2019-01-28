@@ -43,7 +43,7 @@ public class NativeAppAbility extends CordovaPlugin {
             intent = manager.getLaunchIntentForPackage(packageName);
             String className = getPackageClassName(packageName);
             intent.setComponent(new ComponentName(packageName, className));
-            Uri uri = Uri.parse(packageName);
+            Uri uri = Uri.parse(className);
             intent.setData(uri);
 //            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
 //                    | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
