@@ -46,8 +46,8 @@ public class NativeAppAbility extends CordovaPlugin {
                     String className = getPackageClassName(manager, packageName);
                     intent = new Intent(Intent.ACTION_MAIN);
                     intent.setComponent(new ComponentName(packageName, className));
-                    Uri uri = Uri.parse(className);
-                    intent.setData(uri);
+                    //Uri uri = Uri.parse(className);
+                    //intent.setData(uri);
                 } catch (Exception e) {
                     callbackContext.error("");
                     e.printStackTrace();
