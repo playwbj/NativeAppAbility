@@ -41,27 +41,32 @@ public class NativeAppAbility extends CordovaPlugin {
         Intent intent;
         try {
             intent = manager.getLaunchIntentForPackage(packageName);
-            String className = getPackageClassName(packageName);
-            intent.setComponent(new ComponentName(packageName, className));
-            Uri uri = Uri.parse(className);
-            intent.setData(uri);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-//                    | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-            this.cordova.getActivity().startActivity(intent);
-            callbackContext.success();
+            if(intent == null) {
+                try {
+                    String className = getPackageClassName(manager, packageName);
+                    intent = new Intent(Intent.ACTION_MAIN);
+                    intent.setComponent(new ComponentName(packageName, className));
+                    Uri uri = Uri.parse(className);
+                    intent.setData(uri);
+                } catch (Exception e) {
+                    callbackContext.error("");
+                    e.printStackTrace();
+                }
+            }
+            if(intent != null) {
+                this.cordova.getActivity().startActivity(intent);
+                callbackContext.success();
+            }else
+                callbackContext.error("");
         }catch (Exception e){
             callbackContext.error("");
         }
     }
 
-    private String getPackageClassName(String packageName){
-        Context ctx = this.cordova.getActivity().getApplicationContext();
-        PackageManager manager = ctx.getPackageManager();
-
-        Intent intent = manager.getLaunchIntentForPackage(packageName);
-//        Intent intent = new Intent(Intent.ACTION_MAIN, null);
-//        intent.addCategory(Intent.CATEGORY_DEFAULT);
-        List<ResolveInfo> listInfos = manager.queryIntentActivities(intent, 0);
+    private String getPackageClassName(PackageManager manager,String packageName){
+        Intent main=new Intent(Intent.ACTION_MAIN, null);
+        main.addCategory(Intent.CATEGORY_DEFAULT);
+        List<ResolveInfo> listInfos = manager.queryIntentActivities(main,0);
         String className = null;
         for (ResolveInfo info : listInfos) {
             if (packageName.equals(info.activityInfo.packageName)) {
