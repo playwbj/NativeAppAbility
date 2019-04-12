@@ -27,6 +27,9 @@ public class NativeAppAbility extends CordovaPlugin {
             String uri = args.getString(0);
             this.startupNativeApp(uri, callbackContext);
             return true;
+        }else if(action.equals("closeNativeApp")) {
+            this.closeCurrentApp(callbackContext);
+            return true;
         }
         return false;
     }
@@ -91,6 +94,19 @@ public class NativeAppAbility extends CordovaPlugin {
                 callbackContext.error("");
             }
         }else {
+            callbackContext.error("");
+        }
+    }
+
+    /**
+     * main entry of close the current running app
+     * @param callbackContext
+     */
+    private void closeCurrentApp(CallbackContext callbackContext) {
+        try {
+            System.exit(0);
+            callbackContext.success();
+        }catch(Exception e) {
             callbackContext.error("");
         }
     }
