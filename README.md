@@ -45,3 +45,16 @@ nativeAppAbility.startupNativeApp(
 			}  
 		);  
 	}  
+
+## 4. close current running native app, noted:this feature is only for android platform
+### 4.1 usage example:
+nativeAppAbility.closeNativeApp(			
+			function(info) {  // Success callback  
+				console.log(uri + ' is opened successfully');  
+			},  
+			function() {  // Error callback  
+				console.log(uri + ' is opened unsuccessfully');  
+			}  
+		);  
+	}  
+
