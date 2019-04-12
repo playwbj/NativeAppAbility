@@ -1,5 +1,5 @@
 var nativeAppAbility = {    
-    checkAppInstalled: function(urlScheme, successCallback, errorCallback){
+    checkAppInstalled: function(urlScheme, successCallback, errorCallback) {
         cordova.exec(
             successCallback,
             errorCallback,
@@ -9,7 +9,7 @@ var nativeAppAbility = {
         );
     },
     
-    startupNativeApp: function(urlScheme, successCallback,errorCallback){
+    startupNativeApp: function(urlScheme, successCallback,errorCallback) {
         cordova.exec(
             successCallback,
             errorCallback,
@@ -17,8 +17,15 @@ var nativeAppAbility = {
             "startupNativeApp",
             [urlScheme]
         );
+    },
+
+    closeNativeApp: function(successCallback,errorCallback) {
+      cordova.exec(
+          successCallback,
+          errorCallback,
+          "nativeAppAbility",
+          "closeNativeApp");
     }
-    
 };
 
 module.exports = nativeAppAbility;
