@@ -32,11 +32,24 @@ nativeAppAbility.checkAppInstalled(
 			}  
 );
     
-## 3. start up a native app with uri
+## 3. start up a native app with uri or with uri, userid and sign
 ### 3.1 usage example:
 
 nativeAppAbility.startupNativeApp(  
 			uri,//e.g. com.tencent.qqlive  
+			function(info) {  // Success callback  
+				console.log(uri + ' is opened successfully');  
+			},  
+			function() {  // Error callback  
+				console.log(uri + ' is opened unsuccessfully');  
+			}  
+		);  
+	}  
+### 3.2 usage example:
+nativeAppAbility.startupAppWithParams(  
+			uri,//e.g. com.tencent.qqlive
+			'123',
+			'sidugh238sdi',
 			function(info) {  // Success callback  
 				console.log(uri + ' is opened successfully');  
 			},  
