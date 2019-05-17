@@ -47,9 +47,9 @@ nativeAppAbility.startupNativeApp(
 	}  
 ### 3.2 usage example:
 nativeAppAbility.startupAppWithParams(  
-			uri,//e.g. com.tencent.qqlive
-			'123',
-			'sidugh238sdi',
+			uri,//e.g. com.tencent.qqlive  
+			'123',  
+			'sidugh238sdi',  
 			function(info) {  // Success callback  
 				console.log(uri + ' is opened successfully');  
 			},  
