@@ -62,13 +62,6 @@ public class NativeAppAbility extends CordovaPlugin {
                     intent = new Intent(Intent.ACTION_MAIN);
                     intent.setComponent(new ComponentName(packageName, className));
 
-                    if(userId != null && sign != null) {
-                        Bundle bundle = new Bundle();
-                        bundle.putString("userid", userId);
-                        bundle.putString("sign", sign);
-                        intent.putExtras(bundle);
-                    }
-
                     //Uri uri = Uri.parse(className);
                     //intent.setData(uri);
                 } catch (Exception e) {
@@ -77,6 +70,12 @@ public class NativeAppAbility extends CordovaPlugin {
                 }
             }
             if(intent != null) {
+                if(userId != null && sign != null) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("userid", userId);
+                    bundle.putString("sign", sign);
+                    intent.putExtras(bundle);
+                }
                 this.cordova.getActivity().startActivity(intent);
                 callbackContext.success();
             }else
