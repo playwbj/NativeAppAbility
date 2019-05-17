@@ -13,6 +13,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.os.Bundle;
 
 import java.util.List;
 
@@ -25,7 +26,13 @@ public class NativeAppAbility extends CordovaPlugin {
             return true;
         }else if(action.equals("startupNativeApp")) {
             String uri = args.getString(0);
-            this.startupNativeApp(uri, callbackContext);
+            this.startupNativeApp(uri, null,null, callbackContext);
+            return true;
+        }else if(action.equals("startupAppWithParams")) {
+            String uri = args.getString(0);
+            String userId = args.getString(1);
+            String sign = args.getString(2);
+            this.startupNativeApp(uri,userId,sign, callbackContext);
             return true;
         }else if(action.equals("closeNativeApp")) {
             this.closeCurrentApp(callbackContext);
@@ -34,11 +41,16 @@ public class NativeAppAbility extends CordovaPlugin {
         return false;
     }
 
+
     /**
-     * open native app
+     * startup local app with params
      * @param packageName
+     * @param userId, can be null
+     * @param sign, can be null
+     * @param callbackContext
      */
-    private void startupNativeApp(String packageName, CallbackContext callbackContext){
+    private void startupNativeApp(String packageName,String userId, String sign
+                                                        ,CallbackContext callbackContext){
         Context ctx = this.cordova.getActivity().getApplicationContext();
         PackageManager manager = ctx.getPackageManager();
         Intent intent;
@@ -49,6 +61,14 @@ public class NativeAppAbility extends CordovaPlugin {
                     String className = getPackageClassName(manager, packageName);
                     intent = new Intent(Intent.ACTION_MAIN);
                     intent.setComponent(new ComponentName(packageName, className));
+
+                    if(userId != null && sign != null) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("userid", userId);
+                        bundle.putString("sign", sign);
+                        intent.putExtras(bundle);
+                    }
+
                     //Uri uri = Uri.parse(className);
                     //intent.setData(uri);
                 } catch (Exception e) {
