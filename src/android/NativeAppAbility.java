@@ -26,18 +26,25 @@ public class NativeAppAbility extends CordovaPlugin {
             return true;
         }else if(action.equals("startupNativeApp")) {
             String uri = args.getString(0);
-            this.startupNativeApp(uri, null,null, callbackContext);
-            return true;
-        }else if(action.equals("startupAppWithParams")) {
-            String uri = args.getString(0);
-            String userId = args.getString(1);
-            String sign = args.getString(2);
-            this.startupNativeApp(uri,userId,sign, callbackContext);
-            return true;
-        }else if(action.equals("closeNativeApp")) {
-            this.closeCurrentApp(callbackContext);
+            String userId = null;
+            String sign = null;
+            if(args.length() > 2) {
+                userId = args.getString(1);
+                sign = args.getString(2);
+            }
+            this.startupNativeApp(uri, userId,sign, callbackContext);
             return true;
         }
+//        else if(action.equals("startupAppWithParams")) {
+//            String uri = args.getString(0);
+//            String userId = args.getString(1);
+//            String sign = args.getString(2);
+//            this.startupNativeApp(uri,userId,sign, callbackContext);
+//            return true;
+//        }else if(action.equals("closeNativeApp")) {
+//            this.closeCurrentApp(callbackContext);
+//            return true;
+//        }
         return false;
     }
 
