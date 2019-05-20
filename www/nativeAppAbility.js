@@ -1,4 +1,3 @@
-cordova.define("cordova-plugin-nativeappability.nativeAppAbility", function(require, exports, module) {
 var nativeAppAbility = {    
     checkAppInstalled: function(urlScheme, successCallback, errorCallback) {
         cordova.exec(
@@ -43,4 +42,3 @@ var nativeAppAbility = {
 
 module.exports = nativeAppAbility;
 
-});
