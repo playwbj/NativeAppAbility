@@ -32,8 +32,9 @@ nativeAppAbility.checkAppInstalled(
 			}  
 );
     
-## 3. start up a native app with uri or with uri, userid and sign
-### 3.1 usage example:
+## 3. start up a native app with uri or with uri, userid and sign, 
+## <span style="color:red">Notes: if the length of the whole parameters are not 3 or 5, nothing will be done</span>
+### 3.1 usage example, to start up app with no parameters
 
 nativeAppAbility.startupNativeApp(  
 			uri,//e.g. com.tencent.qqlive  
@@ -45,8 +46,8 @@ nativeAppAbility.startupNativeApp(
 			}  
 		);  
 	}  
-### 3.2 usage example:
-nativeAppAbility.startupAppWithParams(  
+### 3.2 usage example， to start up app with userId and sign parameters
+nativeAppAbility.startupNativeApp(  
 			uri,//e.g. com.tencent.qqlive  
 			'123',  
 			'sidugh238sdi',  
