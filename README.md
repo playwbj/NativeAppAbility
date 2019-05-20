@@ -23,7 +23,7 @@
 ### 2.1 usage example:
 
 nativeAppAbility.checkAppInstalled(
-			uri,//e.g. com.tencent.qqlive  
+			uri,//e.g. android: "com.tencent.qqlive" ,  ios: "tenvideo://"
 			function(info) {  // Success callback  
         		      console.log(info.appId + ' with version '+info.version+' is installed');  
 			},  
@@ -35,9 +35,8 @@ nativeAppAbility.checkAppInstalled(
 ## 3. start up a native app with uri or with uri, userid and sign, 
 ## <span style="color:red">Notes: if the length of the whole parameters are not 3 or 5, nothing will be done</span>
 ### 3.1 usage example, to start up app with no parameters
-
 nativeAppAbility.startupNativeApp(  
-			uri,//e.g. com.tencent.qqlive  
+			uri,//e.g. android: "com.tencent.qqlive" ,  ios: "tenvideo://"
 			function(info) {  // Success callback  
 				console.log(uri + ' is opened successfully');  
 			},  
@@ -46,11 +45,12 @@ nativeAppAbility.startupNativeApp(
 			}  
 		);  
 	}  
-### 3.2 usage example， to start up app with userId and sign parameters
+### 3.2 usage example， to start up app with userId and sign parameters  
+## 3.2.1 in android platform use following :  
 nativeAppAbility.startupNativeApp(  
-			uri,//e.g. com.tencent.qqlive  
-			'123',  
-			'sidugh238sdi',  
+			uri,//e.g. android: "com.tencent.qqlive"
+			userId,//e.g. "1234"  
+			sign,e.g. "233asdfer123"  
 			function(info) {  // Success callback  
 				console.log(uri + ' is opened successfully');  
 			},  
@@ -59,10 +59,9 @@ nativeAppAbility.startupNativeApp(
 			}  
 		);  
 	}  
-
-## 4. close current running native app, noted:this feature is only for android platform
-### 4.1 usage example:
-nativeAppAbility.closeNativeApp(			
+## 3.2.2 in ios platform use following :  
+nativeAppAbility.startupNativeApp(  
+			uri,//e.g. "tenvideo://mycenter?userid=123&sign=234"
 			function(info) {  // Success callback  
 				console.log(uri + ' is opened successfully');  
 			},  
@@ -71,4 +70,14 @@ nativeAppAbility.closeNativeApp(
 			}  
 		);  
 	}  
-
+### 3.2 usage example， to start up the browser to load a url
+nativeAppAbility.startupNativeApp(  
+			uri,//e.g. "http://my.wingconn.com?a=xxx"
+			function(info) {  // Success callback  
+				console.log(uri + ' is opened successfully');  
+			},  
+			function() {  // Error callback  
+				console.log(uri + ' is opened unsuccessfully');  
+			}  
+		);  
+	}  
