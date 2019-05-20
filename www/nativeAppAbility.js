@@ -10,32 +10,34 @@ var nativeAppAbility = {
         );
     },
     
-    startupNativeApp: function(urlScheme, successCallback,errorCallback) {
-        cordova.exec(
-            successCallback,
-            errorCallback,
-            "nativeAppAbility",
-            "startupNativeApp",
-            [urlScheme]
-        );
-    },
+    startupNativeApp: function() {
+        if(arguments.length == 3){
+            var urlScheme = arguments[0];
+            var successCallback = arguments[1];
+            var errorCallback = arguments[2];
 
-    startupAppWithParams: function(urlScheme, userId, sign,successCallback,errorCallback) {
-        cordova.exec(
-            successCallback,
-            errorCallback,
-            "nativeAppAbility",
-            "startupAppWithParams",
-            [urlScheme, userId, sign]
-        );
-    },
+            cordova.exec(
+                        successCallback,
+                        errorCallback,
+                        "nativeAppAbility",
+                        "startupNativeApp",
+                        [urlScheme]
+                    );
+        }else if (arguments.length == 5){
+            var urlScheme = arguments[0];
+            var userId = arguments[1];
+            var sign = arguments[2]
+            var successCallback = arguments[3];
+            var errorCallback = arguments[4];
 
-    closeNativeApp: function(successCallback,errorCallback) {
-      cordova.exec(
-          successCallback,
-          errorCallback,
-          "nativeAppAbility",
-          "closeNativeApp");
+            cordova.exec(
+                        successCallback,
+                        errorCallback,
+                        "nativeAppAbility",
+                        "startupNativeApp",
+                        [urlScheme, userId, sign]
+                    );
+        }
     }
 };
 
